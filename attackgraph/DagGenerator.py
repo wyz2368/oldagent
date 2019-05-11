@@ -645,8 +645,8 @@ class Environment(object):
         defact = self.defender.defact
         # if self.training_flag == 0:
         #     print(defact)
-        if self.training_flag == 1:
-            print(attact)
+        # if self.training_flag == 1:
+        #     print(attact)
 
         # print("attact:", attact)
         # print("defact:", defact)
@@ -692,8 +692,8 @@ class Environment(object):
             self.defender.defact.clear()
             inDefenseSet = self.defender.get_def_inDefenseSet(self.G) #should be all zeros.
             wasdef = self.defender.get_def_wasDefended(self.G)
-            print('prev_obs:', self.defender.prev_obs)
-            print('def obs:', self.defender.observation)
+            # print('prev_obs:', self.defender.prev_obs)
+            # print('def obs:', self.defender.observation)
             return np.array(self.defender.prev_obs + self.defender.observation + \
                wasdef + inDefenseSet + [self.T - self.current_time]), dReward, done
 
@@ -709,11 +709,11 @@ class Environment(object):
             self.attacker.update_canAttack(canAttack)
             # inAttackSet should be all zeros, we can check this.
             # print('_step_obs:', len(self.attacker.observation), 'canAttack:', len(canAttack), 'inAttack:', len(inAttackSet))
-            print('att obs:', self.attacker.observation)
-            print('att canAttack:', canAttack)
-            print('att inAtt:', inAttackSet)
-            if done:
-                print("DONE")
+            # print('att obs:', self.attacker.observation)
+            # print('att canAttack:', canAttack)
+            # print('att inAtt:', inAttackSet)
+            # if done:
+            #     print("DONE")
             return np.array(self.attacker.observation + canAttack + inAttackSet + [self.T - self.current_time]), aReward, done
         else:
             raise ValueError("Training flag is set abnormally.")
