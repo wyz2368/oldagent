@@ -635,9 +635,9 @@ class Environment(object):
         #TODO: set nn_def or nn_att first. Sample from mixed strategy for each episode.
         #TODO: check the logic of saving act to prev_act
         if self.training_flag == 0: # If the defender is training, attacker builds greedy set. Vice Versa.
-            self.attacker.att_greedy_action_builder(self.G, self.T - self.current_time)
+            self.attacker.att_greedy_action_builder(self.G, self.T - self.current_time + 1)
         elif self.training_flag == 1:
-            self.defender.def_greedy_action_builder(self.G, self.T - self.current_time)
+            self.defender.def_greedy_action_builder(self.G, self.T - self.current_time + 1)
         else:
             raise ValueError("training flag error.")
 
